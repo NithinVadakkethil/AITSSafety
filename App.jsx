@@ -1,13 +1,16 @@
 import './global.css'
-import { View, Text } from 'react-native'
-import React from 'react'
+import React from 'react';
+import {NavigationContainer} from '@react-navigation/native';
+import {StatusBar} from 'react-native';
+import AppNavigator from './src/navigation/AppNavigator';
 
-const App = () => {
+function App() {
   return (
-    <View className='flex-1 items-center justify-center'>
-      <Text>App</Text>
-    </View>
-  )
+    <NavigationContainer>
+      <StatusBar backgroundColor="#B23A34" barStyle="light-content" />
+      <AppNavigator />
+    </NavigationContainer>
+  );
 }
 
-export default App
+export default App;
