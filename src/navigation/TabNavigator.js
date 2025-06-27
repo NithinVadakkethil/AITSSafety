@@ -1,38 +1,37 @@
-import React from 'react';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import Icon from 'react-native-vector-icons/MaterialIcons';
-import {HomeScreen, TaskScreen, ScanScreen, ReportsScreen, HistoryScreen} from '../screens/main';
-import {ICONS, COLORS} from '../constants';
+import React from "react";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import {
+  HomeScreen,
+  TaskScreen,
+  ScanScreen,
+  ReportsScreen,
+  HistoryScreen,
+} from "../screens";
+import { ICONS, COLORS } from "../constants";
+import { History, Home, Scan, Reports, Task } from "../assets";
 
 const Tab = createBottomTabNavigator();
 
 const TabNavigator = () => {
   return (
     <Tab.Navigator
-      screenOptions={({route}) => ({
-        tabBarIcon: ({focused, color}) => {
-          let iconName;
-          const iconSize = 24;
+      screenOptions={({ route }) => ({
+        tabBarIcon: ({ focused, color }) => {
+          const iconSize = 20;
 
-          switch (route.name) {
-            case 'Home':
-              iconName = ICONS.HOME;
-              break;
-            case 'Task':
-              iconName = ICONS.TASK;
-              break;
-            case 'Scan':
-              iconName = ICONS.SCAN;
-              break;
-            case 'Reports':
-              iconName = ICONS.REPORTS;
-              break;
-            case 'History':
-              iconName = ICONS.HISTORY;
-              break;
-          }
+          const icons = {
+            Home: <Home width={iconSize} height={iconSize} fill={color} />,
+            Task: <Task width={iconSize} height={iconSize} fill={color} />,
+            Scan: <Scan width={iconSize} height={iconSize} fill={color} />,
+            Reports: (
+              <Reports width={iconSize} height={iconSize} fill={color} />
+            ),
+            History: (
+              <History width={iconSize} height={iconSize} fill={color}/>
+            ),
+          };
 
-          return <Icon name={iconName} size={iconSize} color={color} />;
+          return icons[route.name];
         },
         tabBarActiveTintColor: COLORS.primary,
         tabBarInactiveTintColor: COLORS.gray400,
@@ -40,7 +39,7 @@ const TabNavigator = () => {
           backgroundColor: COLORS.white,
           borderTopWidth: 0,
           elevation: 8,
-          shadowOffset: {width: 0, height: -2},
+          shadowOffset: { width: 0, height: -2 },
           shadowOpacity: 0.1,
           shadowRadius: 4,
           height: 60,
@@ -49,10 +48,11 @@ const TabNavigator = () => {
         },
         tabBarLabelStyle: {
           fontSize: 12,
-          fontWeight: '500',
+          fontWeight: "500",
         },
         headerShown: false,
-      })}>
+      })}
+    >
       <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="Task" component={TaskScreen} />
       <Tab.Screen name="Scan" component={ScanScreen} />
