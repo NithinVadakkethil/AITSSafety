@@ -7,3 +7,4 @@ export { default as ScanScreen, } from './main/ScanScreen';
 export { default as ReportsScreen } from './main/ReportsScreen';
 export { default as HistoryScreen } from './main/HistoryScreen';
 export { default as NotificationScreen } from './tree/NotificationScreen';
+export { default as TaskOverviewScreen } from './tree/TaskOverviewScreen';
